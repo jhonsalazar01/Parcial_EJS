@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+
+
+
+<body>
+    <form action="/new-record" method="post">
+        <label for="departments">Seleccione un Departamento:</label>
+        
+
+        <label for="animals">Seleccione un Animal:</label>
+        <select name="animals" id="animals">
+            <% data.forEach(data => { %>
+                <option value="<%= data.id %>"><%= data.name %> (<%= data.nickname %>)</option>
+            <% }) %>
+        </select>
+
+        <button class="btn btn-primary" type="submit" id="btnSend">Enviar</button>
+    </form>
+
+    <script src="/js/scripts.js"></script>
+
+    <div style="width: 900px; display: flexbox; justify-content: center;">
+        <% if (data.size > 0) { %>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                      
+                        <th>Nombre Animal</th>
+                        <th>Departamento</th>
+                        <th>Ciudad</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for (const [k, v] of data) { %>
+                        <tr>
+                          
+                            <td><%= v.name %></td>
+                            <td><%= v.nickname %></td>
+                        </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        <% } else { %>
+            <a>No hay datos</a>
+        <% } %>
+    </div>
+
+</body>
+</html>
